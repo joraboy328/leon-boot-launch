@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/rest")
 public class ArticleRestController {
 
-
+/*
     @ApiOperation(value="保存",notes = "SAVE2",tags = "保存文章",httpMethod = "POST")
     @ApiResponses({
             @ApiResponse(code = 200,message = "成功",response = AjaxResponse.class)
     })
-    //@RequestMapping(value = "/article",method = POST,produces = "application/json")
+    //@RequestMapping(value = "/article",method = POST,produces = "application/json")*/
+
 
     @PostMapping("/article")
     public @ResponseBody  AjaxResponse saveArticle(@RequestBody Article article) {
@@ -36,6 +37,7 @@ public class ArticleRestController {
         log.info("deleteArticle: {}",id);
         return AjaxResponse.success(id);
 
+
     }
 
     @PutMapping("article/{id}")
@@ -49,7 +51,8 @@ public class ArticleRestController {
     @GetMapping("article/{id}")
     public @ResponseBody AjaxResponse getArticle(@PathVariable Long id) {
 
-        Article article=Article.builder().id(1L).author("Leon").content("How use Spring2.0").title("Spring2.0").build();
+        System.out.println("GetArticle");
+        Article article = Article.builder().id(1L).author("Leon").content("How use Spring2.0").title("Spring2.0").build();
         return AjaxResponse.success(article);
     }
 }
